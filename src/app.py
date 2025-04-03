@@ -1,7 +1,6 @@
 from flask import Flask, render_template_string, request
 import os
-import random  # Add this import for generating random numbers
-
+import random  
 app = Flask(__name__)
 
 @app.route('/')
@@ -67,7 +66,7 @@ def home():
 @app.route('/random', methods=['POST'])
 def random_number():
     try:
-        random_number = random.randint(1, 100)  # Generate a random number between 1 and 100
+        random_number = random.randint(1, 100)  
         return render_template_string(f'''
             <!doctype html>
             <html lang="en">
@@ -126,9 +125,9 @@ def random_number():
 
 if __name__ == '__main__':
     try:
-        port = int(os.getenv("PORT", 8000))  # Default to port 8000 if PORT is not set
-        print(f"Starting server on port {port}...")  # Log the port being used
-        app.run(host='0.0.0.0', port=port, debug=True)  # Enable debug mode for better error visibility
+        port = int(os.getenv("PORT", 8000))  
+        print(f"Starting server on port {port}...") 
+        app.run(host='0.0.0.0', port=port, debug=True) 
     except Exception as e:
-        print(f"Error starting the server: {e}")  # Log any startup errors
-        raise  # Re-raise the exception for visibility in container logs
+        print(f"Error starting the server: {e}")  
+        raise  
